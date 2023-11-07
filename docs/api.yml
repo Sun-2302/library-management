@@ -144,6 +144,12 @@ paths:
             type: integer
             default: 1
           required: true
+        - in: path
+          name: pageSize
+          schema: 
+            type: integer
+            default: 50
+          required: true 
       responses:
         200:
           description: The list of filtered authors
