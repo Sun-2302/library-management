@@ -94,6 +94,23 @@ paths:
       responses:
         200: 
           description: OK
+  
+  /books/authors:
+    put:
+      tags:
+        - Book
+      summary: Create or update book
+      operationId: updateBookAuthors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateBookAuthor'
+      responses:
+        200:
+          description: Book's Author updated successfully
 
   /authors:
     get:
