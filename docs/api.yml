@@ -103,6 +103,7 @@ paths:
           required: true
           schema:
             type: string
+        
       responses:
         200: 
           description: OK
@@ -131,12 +132,18 @@ paths:
       summary: Get authors
       operationId: getAuthors
       parameters:
-        - in: query
+        - in: path
           name: name
           description: Filter return authors by given name
-          required: false
+          required: true
           schema:
             type: string
+        - in: path
+          name: page 
+          schema: 
+            type: integer
+            default: 1
+          required: true
       responses:
         200:
           description: The list of filtered authors
