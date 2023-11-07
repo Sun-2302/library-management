@@ -188,6 +188,14 @@ components:
           type: string
           format: date
 
+    UpdateBookAuthor:
+      type: object
+      properties:
+        bookId: 
+          type: string
+        authorId:
+          type: string
+
     Author:
       type: object
       properties:
