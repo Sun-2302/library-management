@@ -71,6 +71,30 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+
+  /books/{bookId}/authors/{authorId}:
+    put:
+      tags:
+        - Book
+      summary: Update a book's author
+      operationId: updateBooksAuthors
+      parameters:
+        - in: path
+          name: bookId
+          description: ID of a books
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: authorId
+          description: ID of an author
+          required: true
+          schema:
+            type: string
+      responses:
+        200: 
+          description: OK
+
   /authors:
     get:
       tags:
@@ -163,7 +187,7 @@ components:
         releaseDate:
           type: string
           format: date
-          
+
     Author:
       type: object
       properties:
