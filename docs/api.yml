@@ -75,7 +75,7 @@ paths:
   /books/{bookId}/authors/{authorId}:
     put:
       tags:
-        - Book
+        - Books
       summary: Update a book's author
       operationId: updateBooksAuthors
       parameters:
