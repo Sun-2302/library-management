@@ -47,8 +47,12 @@ paths:
             type: integer
             default: 1
           required: false
-          
-        
+        - in: query
+          name: pageSize
+          schema: 
+            type: integer
+            default: 50
+          required: false
       responses:
         200:
           description: The list of filtered books
