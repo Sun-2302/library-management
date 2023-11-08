@@ -159,6 +159,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+  
+  /authors:
     put:
       tags:
         - Authors
