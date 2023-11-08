@@ -261,5 +261,12 @@ components:
       schema: 
         type: integer
         default: 1
-        
+
+    pathPaginations:
+      in: path
+      name: pathPaginations
+      required: true
+      schema: 
+        type: integer
+        default: 1
     
