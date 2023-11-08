@@ -252,3 +252,14 @@ components:
       enum:
         - M
         - F
+
+  parameters:
+    queryPaginations:
+      in: query
+      name: queryPagination
+      required: false
+      schema: 
+        type: integer
+        default: 1
+        
+    
