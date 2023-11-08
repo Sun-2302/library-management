@@ -41,12 +41,7 @@ paths:
             type: string
             format: date
           required: false
-        - in: query
-          name: page 
-          schema: 
-            type: integer
-            default: 1
-          required: false
+        - $ref: '#/components/parameters/queryPaginations'
         - in: query
           name: pageSize
           schema: 
@@ -138,12 +133,7 @@ paths:
           required: true
           schema:
             type: string
-        - in: path
-          name: page 
-          schema: 
-            type: integer
-            default: 1
-          required: true
+        - $ref: '#/components/parameters/pathPaginations'
         - in: path
           name: pageSize
           schema: 
@@ -263,6 +253,7 @@ components:
       schema: 
         type: integer
         default: 1
+
 
     pathPaginations:
       in: path
