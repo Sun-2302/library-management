@@ -316,6 +316,18 @@ components:
         sex:
           $ref: '#/components/schemas/Sex'
 
+    Visitors:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+        sex:
+          $ref: '#/components/schemas/Sex'
+
     status:
       type: object
       properties:
