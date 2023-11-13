@@ -128,13 +128,9 @@ paths:
           required: true
           schema:
             type: string
-        - $ref: '#/components/parameters/pathPaginations'
-        - in: path
-          name: pageSize
-          schema: 
-            type: integer
-            default: 50
-          required: true 
+        - $ref: '#/components/parameters/pathPage'
+        - $ref: '#/components/parameters/pathPage'
+        
       responses:
         200:
           description: The list of filtered authors
@@ -256,11 +252,17 @@ components:
         type: integer
         default: 50
 
-    pathPaginations:
+    pathPage:
       in: path
-      name: pathPaginations
+      name: page
       required: true
       schema: 
         type: integer
         default: 1
-    
+    pathPageSize:
+      in: path
+      name: pageSize
+      required: true
+      schema: 
+        type: integer
+        default: 50
