@@ -140,17 +140,16 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/pathPage'
-        - $ref: '#/components/parameters/pathPage'
-        
+        - $ref: '#/components/parameters/pathPage'   
       responses:
         200:
-          description: The list of filtered authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Author'
+          $ref: '#/components/responses/AuthorList200'
+        400: 
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
   
   /authors:
     put:
@@ -167,13 +166,13 @@ paths:
                 $ref: '#/components/schemas/Author'
       responses:
         200:
-          description: The list of created or updated authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Author'   
+          $ref: '#/components/responses/AuthorList200'
+        400: 
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'  
   
   /authors/{id}:
     delete:
@@ -189,12 +188,14 @@ paths:
             type: string
           required: true
       responses:
-        '200':
-          description: The author deleted
-          content:
-            application/json:
-              schema: 
-                $ref: '#/components/schemas/Author'
+        200:
+          $ref: '#/components/responses/Author200'
+        400: 
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500' 
 
 components:
   schemas:
@@ -297,10 +298,34 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Book'
+    
+    AuthorList200:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+          properties:
+            body:
+              type: array
+              items:
+                $ref: '#/components/schemas/Author'
+    
+    Author200: 
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+          properties:
+            body:
+              type: object
+              $ref: '#/components/schemas/Author'
+ 
   responses:
     "BookList200":
       $ref: '#/components/schemas/BookList200'
       description: The list of filtered books
+    "AuthorList200":
+      $ref: '#/components/schemas/AuthorList200'
+      description: The list of filtered authors
+    "Author200":
+      $ref: '#/components/schemas/Author200'
+      description: The deleted authors
     '400':
       $ref: '#/components/schemas/BadRequest'
     '403':
