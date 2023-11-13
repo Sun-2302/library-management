@@ -330,6 +330,21 @@ components:
           type: string
         sex:
           $ref: '#/components/schemas/Sex'
+    
+    BookTransaction:
+      type: object
+      properties:
+        bookId:
+          type: string
+        visitorId:
+          type: string
+        borrowDate:
+          type: string
+          format: date
+        returnDate:
+          type: string
+          format: date
+          default: null 
 
     status:
       type: object
