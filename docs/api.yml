@@ -106,7 +106,7 @@ paths:
   /books/authors:
     put:
       tags:
-        - Book
+        - Books
       summary: Create or update book
       operationId: updateBookAuthors
       requestBody:
@@ -128,6 +128,8 @@ paths:
 
   /books/import:
     post:
+      tags:
+        - Books
       summary: import books from Excel or json
       operationId: importBooks
       requestBody:
@@ -224,6 +226,8 @@ paths:
     
   /authors/import:
     post:
+      tags:
+        - Authors
       summary: Import authors from Excel or JSON
       operationId: importAuthors
       requestBody:
