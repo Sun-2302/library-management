@@ -126,6 +126,31 @@ paths:
         500:
           $ref: '#/components/responses/500'
 
+  /books/import:
+    post:
+      summary: import books from Excel or json
+      operationId: importBooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportBook'
+          application/vnd.ms-excel:
+            schema:
+              description: Excel file containing book data
+              type: string
+              format: binary
+      responses:
+        200:
+          $ref: '#/components/responses/BookList200'
+        400: 
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
+
   /authors/{page}/{size}:
     get:
       tags:
@@ -255,7 +280,7 @@ components:
           properties:
             idAuthor:
               type: string
-              
+
     ImportAuthors:
       type: object
       properties:
