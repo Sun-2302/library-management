@@ -236,6 +236,67 @@ components:
         - M
         - F
 
+    status:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    body:
+      type: object
+
+    ApiResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/status'
+        body:
+          $ref: '#/components/schemas/body'
+
+    InternalServerException:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+          body: {}
+          example:
+            code: 500
+            description: Internal Server Error
+
+    Forbidden:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+          body: {}
+          example:
+            code: 403
+            description: Forbidden
+
+    BadRequest:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+          body: {}
+          example: 
+            code: 400
+            description: Bad Request 
+    
+    BookList200:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+          properties:
+            body:
+              type: array
+              items:
+                $ref: '#/components/schemas/Book'
+  responses:
+    "BookList200":
+      $ref: '#/components/schemas/BookList200'
+      description: The list of filtered books
+    '400':
+      $ref: '#/components/schemas/BadRequest'
+    '403':
+      $ref: '#/components/schemas/Forbidden'
+    '500':
+      $ref: '#/components/schemas/InternalServerException'
+
   parameters:
     queryPage:
       in: query
