@@ -276,6 +276,9 @@ components:
         releaseDate:
           type: string
           format: date
+        available:
+          type: boolean
+          default: true
 
     UpdateBookAuthor:
       type: object
