@@ -155,6 +155,8 @@ paths:
    
   /bookTransaction/book/{bookId}/visitor/{visitorId}:
     put:
+      tags:
+        - Books
       summary: Borrow a book
       operationId: bookTransaction 
       parameters:
@@ -193,6 +195,47 @@ paths:
           schema: 
             type: boolean
           required: true
+      responses:
+        200:
+          $ref: '#/components/responses/BookList200'
+        400: 
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
+  
+  /bookTransaction/visitor/{visitorId}:
+    get:
+      tags:
+        - Books
+      summary: get list of books borrowed by a certain visitor
+      operationId: getAllBookTransaction
+      parameters:
+        - name: visitorId 
+          in: path 
+          description: The Id of the visitor
+          schema: 
+            type: string
+          required: true
+        - in: query
+          name: releaseDateTimeMin
+          description: |
+            If  `releaseDateMax` is not provided, `releaseDateMin` is ignored.
+            `releaseDateMin` can not be after `releaseDateMax`.
+          schema:
+            type: string
+            format: datetime
+          required: false
+        - in: query
+          name: releaseDateTimeMax
+          description: |
+            If  `releaseDateMin` is not provided, `releaseDateMax` is ignored.
+            `releaseDateMax` can not be after `releaseDateMin`.
+          schema:
+            type: string
+            format: datetime
+          required: false
       responses:
         200:
           $ref: '#/components/responses/BookList200'
