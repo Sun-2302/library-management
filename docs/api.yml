@@ -152,6 +152,9 @@ paths:
           $ref: '#/components/responses/403'
         500:
           $ref: '#/components/responses/500'
+   
+  
+
 
   /authors/{page}/{size}:
     get:
@@ -401,6 +404,14 @@ components:
               items:
                 $ref: '#/components/schemas/Book'
     
+    BookTransaction200:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+          properties:
+            body:
+              type: object
+              $ref: '#/components/schemas/BookTransaction'
+    
     AuthorList200:
       allOf:
         - $ref: '#/components/schemas/ApiResponse'
@@ -422,6 +433,9 @@ components:
     "BookList200":
       $ref: '#/components/schemas/BookList200'
       description: The list of filtered books
+    "BookTransaction200":
+      $ref: '#/components/schemas/BookTransaction200'
+      description: The book borrowed 
     "AuthorList200":
       $ref: '#/components/schemas/AuthorList200'
       description: The list of filtered authors
