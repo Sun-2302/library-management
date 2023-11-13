@@ -41,13 +41,8 @@ paths:
             type: string
             format: date
           required: false
-        - $ref: '#/components/parameters/queryPaginations'
-        - in: query
-          name: pageSize
-          schema: 
-            type: integer
-            default: 50
-          required: false
+        - $ref: '#/components/parameters/queryPage'
+        - $ref: '#/components/parameters/queryPageSize'
       responses:
         200:
           description: The list of filtered books
@@ -246,14 +241,20 @@ components:
         - F
 
   parameters:
-    queryPaginations:
+    queryPage:
       in: query
-      name: queryPagination
+      name: page
       required: false
       schema: 
         type: integer
         default: 1
-
+    queryPageSize:
+      in: query
+      name: pageSize
+      required: false 
+      schema: 
+        type: integer
+        default: 50
 
     pathPaginations:
       in: path
