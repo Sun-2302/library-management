@@ -272,6 +272,36 @@ paths:
           $ref: '#/components/responses/500'
   
   /authors:
+    get:
+      summary: Get all authors
+      operationId: getAuthors
+      tags:
+        - Authors
+      parameters:
+        - name: authorName
+          in: query
+          description: |
+            Filter returned authors by given name. 
+            If not provided, then list is not filtered.
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: pageSize
+          description: Number of items per page
+          schema:
+            type: integer
+            default: 50
+          required: false
+      responses:
+        200:
+          $ref: '#/components/responses/AuthorList200'
+        400: 
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
     put:
       tags:
         - Authors
