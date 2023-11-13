@@ -248,6 +248,22 @@ components:
         - M
         - F
 
+    ImportBook:
+      allOf:
+        - $ref: '#/components/schemas/Book'
+        - type: object
+          properties:
+            idAuthor:
+              type: string
+              
+    ImportAuthors:
+      type: object
+      properties:
+        authorName:
+          type: string
+        sex:
+          $ref: '#/components/schemas/Sex'
+
     status:
       type: object
       properties:
