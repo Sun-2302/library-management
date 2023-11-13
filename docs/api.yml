@@ -179,6 +179,29 @@ paths:
           $ref: '#/components/responses/403'
         500:
           $ref: '#/components/responses/500'
+  
+  /books/availability:
+    get:
+      summary: Get all available books or borrowed books 
+      operationId: bookAvailability
+      tags:
+        - Books 
+      parameters:
+        - name: availability 
+          in: query
+          description: The availability we are searching for (true or false)
+          schema: 
+            type: boolean
+          required: true
+      responses:
+        200:
+          $ref: '#/components/responses/BookList200'
+        400: 
+          $ref: '#/components/responses/400'
+        403:
+          $ref: '#/components/responses/403'
+        500:
+          $ref: '#/components/responses/500'
 
   /authors/{page}/{size}:
     get:
